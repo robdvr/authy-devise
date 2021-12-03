@@ -73,6 +73,9 @@ class Devise::DeviseAuthyController < DeviseController
         redirect_to after_authy_enabled_path_for(resource) and return
       end
     else
+      
+        puts "Failed to register user: #{@authy_user.errors}"
+      
       set_flash_message(:error, :not_enabled)
       render :enable_authy
     end
